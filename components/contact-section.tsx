@@ -8,9 +8,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail } from "lucide-react"
+import { toast } from "sonner"
 
 export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,10 +37,44 @@ export function ContactSection() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        toast.success("Message sent successfully!", {
+          description: "We'll get back to you within 24 hours.",
+        })
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        })
+      } else {
+        toast.error("Failed to send message", {
+          description: data.error || "Please try again later.",
+        })
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+      toast.error("Failed to send message", {
+        description: "Please check your connection and try again.",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -87,6 +123,7 @@ export function ContactSection() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -96,6 +133,7 @@ export function ContactSection() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -105,10 +143,11 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
-                <Button type="submit" className="w-full glow-on-hover">
-                  Send Message
+                <Button type="submit" className="w-full glow-on-hover" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </Card>

@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { Toaster } from "sonner"
+import { HalloweenAnimations } from "@/components/halloween-animations"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -26,7 +28,9 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${poppins.variable} font-sans antialiased`}>
         {children}
+        <HalloweenAnimations />
         <Analytics />
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   )
