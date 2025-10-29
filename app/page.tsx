@@ -8,6 +8,7 @@ import { PricingSection } from "@/components/pricing-section"
 import { ContactSection } from "@/components/contact-section"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { ScrollNavigation } from "@/components/scroll-navigation"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <PricingSection />
       <ContactSection />
       <Footer />
+      <ScrollNavigation />
     </main>
   )
 }

@@ -10,7 +10,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-background.jpg"
@@ -26,7 +26,7 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="mb-8 animate-fade-in-up flex justify-center">
+        <div className="mb-8 animate-fade-in-up flex justify-center pt-20 md:pt-0">
           <Image
             src="/tovizy-logo.png"
             alt="toVizy 3D Studio"

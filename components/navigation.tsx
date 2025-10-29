@@ -23,11 +23,11 @@ export function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-4" : "bg-black/40 backdrop-blur-md py-6"
+        scrolled ? "glass py-3" : "bg-black/40 backdrop-blur-md py-4"
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <div className="glow-on-hover cursor-pointer relative w-32 h-8">
+        <div className="glow-on-hover cursor-pointer relative w-24 h-6 md:w-32 md:h-8">
           <Image
             src={scrolled ? "/images/logo-accent.png" : "/images/logo-white.png"}
             alt="toVizy"

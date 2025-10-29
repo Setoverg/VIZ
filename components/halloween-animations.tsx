@@ -16,12 +16,11 @@ export function HalloweenAnimations() {
   const [elements, setElements] = useState<FloatingElement[]>([])
 
   useEffect(() => {
-    // Create floating Halloween elements
     const newElements: FloatingElement[] = []
     const types: Array<"ghost" | "bat" | "pumpkin"> = ["ghost", "bat", "pumpkin"]
 
     for (let i = 0; i < 15; i++) {
-      const baseSize = 25 + Math.random() * 30 // Changed from 30-70 to 25-55
+      const baseSize = 25 + Math.random() * 30
       newElements.push({
         id: i,
         type: types[Math.floor(Math.random() * types.length)],
@@ -48,7 +47,7 @@ export function HalloweenAnimations() {
   }
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-50">
       {elements.map((element) => (
         <div
           key={element.id}
@@ -67,7 +66,7 @@ export function HalloweenAnimations() {
       ))}
 
       {/* Spooky fog effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 via-purple-500/5 to-transparent animate-pulse-slow" />
+      <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 via-purple-500/5 to-transparent animate-pulse-slow pointer-events-none" />
     </div>
   )
 }
