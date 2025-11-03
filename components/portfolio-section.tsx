@@ -81,27 +81,6 @@ const projects = [
     thumbnail: "/images/khouryr-1.jpg",
     images: ["/images/khouryr-1.jpg", "/images/khouryr-2.jpg"],
   },
-  {
-    id: 9,
-    title: "Alpine Retreat - Great Room",
-    category: "Interior",
-    description: "Luxury Mountain Lodge",
-    thumbnail: "/images/alpine-1.jpg",
-    images: ["/images/alpine-1.jpg", "/images/alpine-2.jpg", "/images/alpine-3.jpg"],
-  },
-  {
-    id: 10,
-    title: "Green Valley Estate",
-    category: "Interior",
-    description: "Modern Farmhouse Residence",
-    thumbnail: "/images/green-valley-1.jpg",
-    images: [
-      "/images/green-valley-1.jpg",
-      "/images/green-valley-2.jpg",
-      "/images/green-valley-3.jpg",
-      "/images/green-valley-4.jpg",
-    ],
-  },
 ]
 
 export function PortfolioSection() {

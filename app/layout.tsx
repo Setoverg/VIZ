@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "sonner"
-import { HalloweenAnimations } from "@/components/halloween-animations"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -13,7 +12,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Tovizy - Luxury 3D Visualization Studio",
+  title: "Tovizy - Premium 3D Visualization Studio",
   description:
     "Photorealistic 3D visualization for interiors, exteriors, 360° tours, and cinematic animations. Crafted by light.",
   generator: "v0.app",
@@ -28,7 +27,6 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${poppins.variable} font-sans antialiased`}>
         {children}
-        <HalloweenAnimations />
         <Analytics />
         <Toaster position="top-right" richColors />
       </body>
