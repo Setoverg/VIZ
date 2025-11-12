@@ -14,6 +14,16 @@ export function CVPage() {
         <div className="bg-white rounded-lg shadow-2xl overflow-hidden print:shadow-none print:rounded-none">
           {/* Header with gradient background */}
           <div className="bg-gradient-to-r from-primary via-primary-light to-primary p-8 print:p-4 text-white relative overflow-hidden">
+            <div className="fixed top-20 right-4 z-50 md:hidden print:hidden">
+              <Button
+                onClick={handlePrint}
+                className="bg-white text-primary hover:bg-white/90 shadow-lg gap-2 text-xs px-3 py-2"
+              >
+                <Download className="w-3 h-3" />
+                <span>CV</span>
+              </Button>
+            </div>
+
             <div className="absolute inset-0 opacity-10">
               <div
                 className="absolute inset-0"
@@ -24,7 +34,7 @@ export function CVPage() {
               ></div>
             </div>
 
-            <div className="relative flex items-center gap-6 print:gap-3">
+            <div className="relative flex flex-col md:flex-row items-center gap-6 print:gap-3">
               <div className="w-28 h-28 print:w-20 print:h-20 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0 bg-white">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Me_AlexLekarev-mE28PWk2JMKk4Dv56gH1S8sKMgwbRl.jpg"
@@ -34,7 +44,7 @@ export function CVPage() {
                 />
               </div>
 
-              <div className="flex-1">
+              <div className="flex-1 text-center md:text-left">
                 <h1 className="text-4xl print:text-2xl font-bold mb-2 print:mb-1">Alex Lekarev</h1>
                 <p className="text-xl print:text-sm mb-3 print:mb-2 text-white/90">
                   Lead 3D Visualization Artist & Generalist
@@ -67,10 +77,13 @@ export function CVPage() {
                 </div>
               </div>
 
-              <div className="print:hidden">
-                <Button onClick={handlePrint} className="bg-white text-primary hover:bg-white/90 gap-2">
+              <div className="hidden md:flex flex-shrink-0">
+                <Button
+                  onClick={handlePrint}
+                  className="bg-white text-primary hover:bg-white/90 gap-2 text-sm px-4 py-2 print:hidden"
+                >
                   <Download className="w-4 h-4" />
-                  Download CV
+                  <span>Download CV</span>
                 </Button>
               </div>
             </div>

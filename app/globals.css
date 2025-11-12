@@ -517,4 +517,9 @@
     font-size: 1rem !important;
     margin-top: 0.5rem !important;
   }
+
+  /* Force larger stat box padding to fill bottom space */
+  .print\:p-2 {
+    padding: 1.5rem !important;
+  }
 }

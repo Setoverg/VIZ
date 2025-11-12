@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
 
@@ -26,6 +29,7 @@ export function Navigation() {
     }
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: "smooth" })
+    setMobileMenuOpen(false)
   }
 
   return (
@@ -101,6 +105,61 @@ export function Navigation() {
           >
             Contact
           </Button>
+        </div>
+
+        <div className="md:hidden">
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className={scrolled ? "text-foreground" : "text-white"}>
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4 mt-8">
+                <button
+                  onClick={() => scrollToSection("about")}
+                  className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                >
+                  Services
+                </button>
+                <button
+                  onClick={() => scrollToSection("process")}
+                  className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                >
+                  Process
+                </button>
+                <button
+                  onClick={() => scrollToSection("portfolio")}
+                  className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                >
+                  Portfolio
+                </button>
+                <button
+                  onClick={() => scrollToSection("pricing")}
+                  className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                >
+                  Pricing
+                </button>
+                <Link
+                  href="/cv"
+                  className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  CV
+                </Link>
+                <Button onClick={() => scrollToSection("contact")} className="w-full mt-4">
+                  Contact
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>
