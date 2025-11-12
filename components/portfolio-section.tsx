@@ -2,11 +2,21 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Card } from "@/components/ui/card"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Play } from "lucide-react"
 
 const projects = [
+  {
+    id: 0,
+    title: "Architectural Animation Showreel",
+    category: "Video Animation",
+    description: "Cinematic 3D Walkthrough",
+    thumbnail:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/For_CV%20%283%29-fONl37C2cOKUwyDi1QVirAO5keuKZz.jpg",
+    isVideo: true,
+    videoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Site4-8cBEupHPbtOeNuYLAVwn2V2Wn2aSYn.mp4",
+  },
   {
     id: 1,
     title: "Posana - Italian Restaurant",
@@ -135,19 +145,26 @@ export function PortfolioSection() {
                 <Card
                   className={`group relative overflow-hidden cursor-pointer transition-all duration-700 hover:scale-[1.02] glow-on-hover ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
+                  } ${project.isVideo ? "md:col-span-2" : ""}`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                   onClick={() => {
                     setSelectedProject(project)
                     setCurrentImageIndex(0)
                   }}
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className={`${project.isVideo ? "aspect-video" : "aspect-[4/3]"} overflow-hidden`}>
                     <img
                       src={project.thumbnail || "/placeholder.svg"}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
+                    {project.isVideo && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Play className="w-10 h-10 text-white ml-1" fill="white" />
+                        </div>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -155,51 +172,60 @@ export function PortfolioSection() {
                     <h3 className="text-xl font-semibold">{project.title}</h3>
                     {project.description && <p className="text-sm text-white/80 mt-1">{project.description}</p>}
                     <Button variant="secondary" size="sm" className="mt-4">
-                      View Project
+                      {project.isVideo ? "Watch Video" : "View Project"}
                     </Button>
                   </div>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95">
-                <div className="relative">
-                  {selectedProject && (
-                    <>
-                      <img
-                        src={selectedProject.images[currentImageIndex] || "/placeholder.svg"}
-                        alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                        className="w-full h-auto max-h-[95vh] object-contain"
-                      />
-                      {selectedProject.images.length > 1 && (
-                        <>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white"
-                            onClick={prevImage}
-                          >
-                            <ChevronLeft className="w-6 h-6" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white"
-                            onClick={nextImage}
-                          >
-                            <ChevronRight className="w-6 h-6" />
-                          </Button>
-                        </>
-                      )}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                        {selectedProject.images.map((_, idx) => (
-                          <div
-                            key={idx}
-                            className={`w-2 h-2 rounded-full transition-all ${
-                              idx === currentImageIndex ? "bg-white w-8" : "bg-white/50"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </>
+              <DialogContent className="max-w-[98vw] max-h-[98vh] p-0 bg-black/95">
+                <DialogDescription className="sr-only">
+                  {selectedProject?.isVideo ? "Video player" : "Image gallery viewer"}
+                </DialogDescription>
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {selectedProject && selectedProject.isVideo ? (
+                    <video controls autoPlay className="w-full h-auto max-h-[98vh]" src={selectedProject.videoUrl}>
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    selectedProject && (
+                      <>
+                        <img
+                          src={selectedProject.images[currentImageIndex] || "/placeholder.svg"}
+                          alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                          className="w-full h-auto max-h-[95vh] object-contain"
+                        />
+                        {selectedProject.images.length > 1 && (
+                          <>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white"
+                              onClick={prevImage}
+                            >
+                              <ChevronLeft className="w-6 h-6" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white"
+                              onClick={nextImage}
+                            >
+                              <ChevronRight className="w-6 h-6" />
+                            </Button>
+                          </>
+                        )}
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                          {selectedProject.images.map((_, idx) => (
+                            <div
+                              key={idx}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                idx === currentImageIndex ? "bg-white w-8" : "bg-white/50"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )
                   )}
                 </div>
               </DialogContent>

@@ -105,7 +105,7 @@
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --color-chart-5: var(--color-chart-5);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -232,4 +232,289 @@
 .animation-delay-600 {
   animation-delay: 0.6s;
   opacity: 0;
+}
+
+/* Improved print styles for single-page CV layout */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.5cm 0.6cm;
+  }
+
+  /* Force browsers to print background colors and gradients */
+  body {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Hide navigation, buttons, and interactive elements in print */
+  nav,
+  button,
+  .glow-on-hover,
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Preserve glassmorphism and backgrounds in print */
+  .glass {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Force single page layout */
+  .min-h-screen {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* Prevent page breaks */
+  * {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Preserve gradients and backgrounds for print */
+  .bg-gradient-to-r,
+  .bg-gradient-to-br {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  /* Keep all background colors and borders */
+  .bg-primary,
+  .bg-primary-light,
+  .bg-white,
+  .bg-gray-200,
+  .border-primary,
+  .border-gray-200 {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  /* Increased border-radius to 1.5rem for more visible rounded corners */
+  .rounded-lg,
+  .rounded-md,
+  .rounded-sm,
+  .rounded-full {
+    border-radius: inherit !important;
+  }
+
+  /* Force visible rounded corners on all images, cards, and borders */
+  img,
+  .border,
+  .bg-white,
+  .shadow-sm,
+  [class*="rounded"] {
+    border-radius: 1.5rem !important;
+  }
+
+  /* Compact shadows for print */
+  .shadow-2xl {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Increased spacing between sections to fill page better */
+  .print\:py-6 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .print\:p-3 {
+    padding: 1.25rem !important;
+  }
+
+  .print\:mb-2 {
+    margin-bottom: 1rem !important;
+  }
+
+  .print\:mb-1 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .print\:mt-2 {
+    margin-top: 1rem !important;
+  }
+
+  .print\:mt-1 {
+    margin-top: 0.75rem !important;
+  }
+
+  .print\:space-y-2 > * + * {
+    margin-top: 1rem !important;
+  }
+
+  .print\:space-y-1 > * + * {
+    margin-top: 0.75rem !important;
+  }
+
+  .print\:gap-1 {
+    gap: 1rem !important;
+  }
+
+  .print\:gap-2 {
+    gap: 1.25rem !important;
+  }
+
+  .print\:leading-tight {
+    line-height: 1.3 !important;
+  }
+
+  /* Adjusted project image sizes for better fit */
+  .print\:h-24 {
+    height: 7rem !important;
+  }
+
+  .print\:h-32 {
+    height: 8rem !important;
+  }
+
+  /* Slightly increased header text sizes */
+  .print\:text-xs {
+    font-size: 0.65rem !important;
+  }
+
+  .print\:text-sm {
+    font-size: 0.8rem !important;
+  }
+
+  .print\:text-base {
+    font-size: 0.9rem !important;
+  }
+
+  .print\:text-lg {
+    font-size: 1rem !important;
+  }
+
+  .print\:text-xl {
+    font-size: 1.15rem !important;
+  }
+
+  .print\:text-2xl {
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
+  }
+
+  .print\:text-3xl {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+  }
+
+  /* Moderately increased specific content font sizes (30-40% increase) */
+  .cv-job-title {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+  }
+
+  .cv-job-location {
+    font-size: 0.8rem !important;
+  }
+
+  .cv-job-bullet {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .cv-skill-name {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+  }
+
+  .cv-skill-percent {
+    font-size: 0.75rem !important;
+  }
+
+  /* Increased contact link sizes from 0.85rem to 1rem */
+  .cv-contact-link {
+    font-size: 1rem !important;
+  }
+
+  .cv-bio {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .cv-section-title {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+  }
+
+  .cv-expertise-tag {
+    font-size: 0.7rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .cv-language-name,
+  .cv-language-level,
+  .cv-interest-item {
+    font-size: 0.8rem !important;
+  }
+
+  /* Increased statistics section padding to push content down and fill space */
+  .print\:py-4 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Remove extra bottom padding */
+  .bg-white {
+    padding-bottom: 0 !important;
+  }
+
+  .min-h-screen.print\:pt-0 {
+    padding-top: 0 !important;
+  }
+
+  /* Ensure images print correctly */
+  img {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  .print\:space-y-4 > * + * {
+    margin-top: 1.5rem !important;
+  }
+
+  .print\:space-y-3 > * + * {
+    margin-top: 1.25rem !important;
+  }
+
+  /* Increase Featured Projects section spacing */
+  .cv-projects-section {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Significantly increased statistics section sizes */
+  .cv-stats-section {
+    margin-top: 2rem !important;
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  .cv-stat-number {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+  }
+
+  .cv-stat-label {
+    font-size: 1rem !important;
+    margin-top: 0.5rem !important;
+  }
 }
