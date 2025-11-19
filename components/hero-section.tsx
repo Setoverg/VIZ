@@ -41,7 +41,7 @@ export function HeroSection() {
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance animate-fade-in-up animation-delay-200 bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 bg-clip-text text-transparent drop-shadow-2xl"
           style={{ textShadow: "0 4px 20px rgba(251,191,36,0.3)" }}
         >
-          Premium 3D Visualization
+          Premium 3D Visualization <span className="text-3xl md:text-4xl lg:text-5xl italic">too easy</span>
         </h1>
 
         <p
