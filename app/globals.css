@@ -276,11 +276,11 @@
   opacity: 0;
 }
 
-/* Improved print styles for single-page CV layout */
+/* Business card print styles - landscape A4 */
 @media print {
   @page {
-    size: A4;
-    margin: 0.5cm 0.6cm;
+    size: A4 landscape;
+    margin: 0.8cm;
   }
 
   /* Force browsers to print background colors and gradients */
@@ -288,12 +288,24 @@
     print-color-adjust: exact !important;
     -webkit-print-color-adjust: exact !important;
     color-adjust: exact !important;
+    background: #f7f5f2 !important;
   }
 
   * {
     print-color-adjust: exact !important;
     -webkit-print-color-adjust: exact !important;
     color-adjust: exact !important;
+  }
+
+  /* Business card specific print styles */
+  #business-card {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  #business-card img {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
   }
 
   .container {
