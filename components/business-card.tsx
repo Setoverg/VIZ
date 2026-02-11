@@ -79,12 +79,12 @@ export function BusinessCard() {
               </p>
 
               {/* Team Photo */}
-              <div className="mt-6 relative w-32 h-32 rounded-full overflow-hidden border-[3px] border-[#a8b5a0]/30">
+              <div className="mt-6 relative w-40 h-40 rounded-full overflow-hidden border-[3px] border-[#a8b5a0]/30">
                 <Image
                   src="/images/team.jpeg"
                   alt="toVIZy Studio Team"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-[center_30%]"
                 />
               </div>
 
