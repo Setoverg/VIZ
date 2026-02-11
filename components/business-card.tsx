@@ -63,13 +63,13 @@ export function BusinessCard() {
           <div className="flex">
             {/* Left: Dark brand panel */}
             <div className="bg-[#2c3631] w-[320px] shrink-0 flex flex-col items-center justify-center px-10 py-10">
-              <div className="w-44 mb-4">
+              <div className="w-48 mb-4">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo-white.png"
                   alt="toVIZy Studio Logo"
-                  width={400}
-                  height={160}
-                  className="w-full h-auto brightness-0 invert"
+                  width={630}
+                  height={310}
+                  className="w-full h-auto"
                   style={{ margin: "0 auto" }}
                   priority
                 />
