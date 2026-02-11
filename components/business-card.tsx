@@ -62,14 +62,15 @@ export function BusinessCard() {
           {/* Top Row: Brand header + Team Photo + Contact */}
           <div className="flex">
             {/* Left: Dark brand panel */}
-            <div className="bg-[#2c3631] w-[320px] shrink-0 flex flex-col items-center justify-center px-8 py-8">
-              <div className="w-36 mb-4">
+            <div className="bg-[#2c3631] w-[320px] shrink-0 flex flex-col items-center justify-center px-10 py-10">
+              <div className="w-44 mb-4">
                 <Image
                   src="/images/logo.png"
                   alt="toVIZy Studio Logo"
                   width={400}
                   height={160}
                   className="w-full h-auto brightness-0 invert"
+                  style={{ margin: "0 auto" }}
                   priority
                 />
               </div>
@@ -78,7 +79,7 @@ export function BusinessCard() {
               </p>
 
               {/* Team Photo */}
-              <div className="mt-6 relative w-20 h-20 rounded-full overflow-hidden border-[3px] border-[#a8b5a0]/30">
+              <div className="mt-6 relative w-32 h-32 rounded-full overflow-hidden border-[3px] border-[#a8b5a0]/30">
                 <Image
                   src="/images/team.jpeg"
                   alt="toVIZy Studio Team"
@@ -94,11 +95,8 @@ export function BusinessCard() {
 
             {/* Right: Content area */}
             <div className="flex-1 flex flex-col">
-              {/* Portfolio heading + Contact row */}
-              <div className="flex items-center justify-between px-6 pt-5 pb-3">
-                <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#2c3631]">
-                  Selected Work
-                </p>
+              {/* Contact row */}
+              <div className="flex items-center justify-end px-6 pt-5 pb-3">
                 <div className="flex items-center gap-4">
                   <a
                     href="https://tovizy.com"

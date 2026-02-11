@@ -308,6 +308,11 @@
     -webkit-print-color-adjust: exact !important;
   }
 
+  /* Ensure logo panel has enough room in print */
+  #business-card .bg-\[\#2c3631\] {
+    padding: 2rem 2.5rem !important;
+  }
+
   .container {
     max-width: 100% !important;
     padding: 0 !important;
