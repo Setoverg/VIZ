@@ -3,60 +3,65 @@
 import { useEffect, useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
+import { Check, Clock, Zap } from "lucide-react"
 
 const pricingPlans = [
   {
-    name: "Basic",
-    price: "from $250",
-    description: "Perfect for single room visualization",
+    name: "Single Space",
+    price: "From $650",
+    description: "Perfect for standard rooms and essential design presentations.",
     features: [
-      "Static interior render",
-      "One camera angle",
-      "Standard resolution",
-      "2 revision rounds",
+      "1 High-End Interior Render",
+      "Photorealistic Lighting & Texturing",
+      "AI-Enhanced Detail Refinement",
+      { text: "2 Revision Rounds included", bold: true },
       "5-7 day delivery",
     ],
+    buttonText: "Get Started",
+    scrollToContact: true,
   },
   {
-    name: "Advanced",
-    price: "from $400",
-    description: "Multiple views with professional lighting",
+    name: "Full Concept / Multi-View",
+    price: "From $950",
+    description: "Comprehensive coverage for complex spaces or multiple angles.",
     features: [
-      "Multiple camera angles",
-      "Advanced lighting setup",
-      "High resolution renders",
-      "3 revision rounds",
-      "Detailed textures",
+      "Up to 3 High-End Renders (Same Room/Space)",
+      "Advanced Lighting Scenarios (e.g., Day/Night)",
+      "Premium Custom Furniture Integration",
+      { text: "2 Revision Rounds included", bold: true },
       "7-10 day delivery",
     ],
     popular: true,
+    buttonText: "Get Started",
+    scrollToContact: true,
   },
   {
-    name: "Animation",
-    price: "from $600",
-    description: "Cinematic walkthrough experience",
-    features: [
-      "Short cinematic video",
-      "15-30 seconds duration",
-      "4K resolution",
-      "Professional editing",
-      "Background music",
-      "10-14 day delivery",
-    ],
-  },
-  {
-    name: "Full Package",
+    name: "Immersive & Animation",
     price: "Custom Quote",
-    description: "Complete project visualization",
+    priceSubtext: "Starting from $1,500",
+    description: "For large-scale commercial projects and cinematic presentations.",
     features: [
-      "Full project coverage",
-      "Interior + Exterior",
-      "360° virtual tour",
-      "Animation included",
-      "Unlimited revisions",
-      "Priority support",
+      "Full Project Coverage (Interior + Exterior)",
+      "Cinematic 4K Walkthrough Video",
+      "360° Virtual Tours",
+      "Strictly structured revision timeline",
+      "Priority Support",
     ],
+    buttonText: "Request a Quote",
+    scrollToContact: true,
+  },
+]
+
+const addOns = [
+  {
+    icon: Clock,
+    title: "Additional Revision Round",
+    price: "$150 / per round",
+  },
+  {
+    icon: Zap,
+    title: "Rush Delivery (48 hours)",
+    price: "+50% of project cost",
   },
 ]
 
@@ -96,7 +101,7 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <Card
               key={plan.name}
@@ -112,23 +117,61 @@ export function PricingSection() {
               )}
               <div className="mb-6">
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="text-3xl font-bold text-primary mb-2">{plan.price}</div>
+                <div className="text-3xl font-bold text-primary mb-1">{plan.price}</div>
+                {plan.priceSubtext && (
+                  <div className="text-sm text-muted-foreground mb-2">{plan.priceSubtext}</div>
+                )}
                 <p className="text-sm text-muted-foreground">{plan.description}</p>
               </div>
               <ul className="space-y-3 mb-8">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
+                {plan.features.map((feature, featureIndex) => {
+                  const isObject = typeof feature === "object"
+                  const text = isObject ? feature.text : feature
+                  const isBold = isObject && feature.bold
+                  return (
+                    <li key={featureIndex} className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className={`text-sm ${isBold ? "font-bold" : ""}`}>{text}</span>
+                    </li>
+                  )
+                })}
               </ul>
-              <Button onClick={scrollToContact} variant={plan.popular ? "default" : "outline"} className="w-full">
-                Get Started
+              <Button 
+                onClick={scrollToContact} 
+                variant={plan.popular ? "default" : "outline"} 
+                className="w-full"
+              >
+                {plan.buttonText}
               </Button>
             </Card>
           ))}
         </div>
+
+        {/* Add-ons Section */}
+        <Card className={`mt-12 p-8 glass-dark max-w-3xl mx-auto transition-all duration-700 delay-300 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}>
+          <h3 className="text-2xl font-bold mb-4 text-center">Add-ons & A La Carte Services</h3>
+          <p className="text-muted-foreground text-center mb-6">
+            We value your time and ours. To keep project timelines efficient, all base packages include 2 consolidated rounds of revisions.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {addOns.map((addon, index) => (
+              <div 
+                key={index} 
+                className="flex items-center gap-4 p-4 rounded-lg bg-secondary/30 border border-border/50"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <addon.icon className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <div className="font-medium">{addon.title}</div>
+                  <div className="text-primary font-bold">{addon.price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
 
         <p className="text-center text-muted-foreground mt-12 max-w-2xl mx-auto">
           Final pricing depends on project complexity, detail level, and specific requirements. Contact us for a
