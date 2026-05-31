@@ -9,7 +9,6 @@ import { ContactSection } from "@/components/contact-section"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { ScrollNavigation } from "@/components/scroll-navigation"
-import { ChristmasAnimations } from "@/components/christmas-animations"
 
 export default function Home() {
   return (
@@ -25,7 +24,6 @@ export default function Home() {
       <ContactSection />
       <Footer />
       <ScrollNavigation />
-      <ChristmasAnimations />
     </main>
   )
 }
