@@ -7,8 +7,23 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail } from "lucide-react"
+import { Mail, Instagram, Linkedin } from "lucide-react"
 import { toast } from "sonner"
+
+const socialLinks = [
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/tovizystudio/",
+    handle: "@tovizystudio",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/tovizy/",
+    handle: "Tovizy",
+  },
+]
 
 export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -84,9 +99,9 @@ export function ContactSection() {
           <div
             className={`text-center mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Let's Create Together</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Let&apos;s Create Together</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Let's create something exceptional together. Reach out to discuss your project, timeline, and vision.
+              Let&apos;s create something exceptional together. Reach out to discuss your project, timeline, and vision.
             </p>
           </div>
 
@@ -95,6 +110,7 @@ export function ContactSection() {
             <Card
               className={`p-8 glass-dark flex flex-col justify-center transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
+              {/* Email */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                   <Mail className="w-6 h-6 text-primary" />
@@ -106,8 +122,30 @@ export function ContactSection() {
                   </a>
                 </div>
               </div>
+
+              {/* Social Links */}
+              <div className="space-y-4 mb-6">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 group"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <social.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">{social.label}</h3>
+                      <span className="text-primary group-hover:underline">{social.handle}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
               <p className="text-muted-foreground leading-relaxed">
-                We typically respond within 24 hours. Share your project details, and we'll provide a personalized quote
+                We typically respond within 24 hours. Share your project details, and we&apos;ll provide a personalized quote
                 and timeline.
               </p>
             </Card>
