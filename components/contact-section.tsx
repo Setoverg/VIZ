@@ -13,15 +13,24 @@ import { toast } from "sonner"
 const socialLinks = [
   {
     icon: Instagram,
+    iconSrc: null,
     label: "Instagram",
     href: "https://www.instagram.com/tovizystudio/",
     handle: "@tovizystudio",
   },
   {
     icon: Linkedin,
+    iconSrc: null,
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/tovizy/",
     handle: "Tovizy",
+  },
+  {
+    icon: null,
+    iconSrc: "/images/boosty-logo.png",
+    label: "Boosty",
+    href: "https://boosty.to/tovizy",
+    handle: "boosty.to/tovizy",
   },
 ]
 
@@ -134,7 +143,15 @@ export function ContactSection() {
                     className="flex items-center gap-4 group"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <social.icon className="w-6 h-6 text-primary" />
+                      {social.icon ? (
+                        <social.icon className="w-6 h-6 text-primary" />
+                      ) : (
+                        <img
+                          src={social.iconSrc || "/placeholder.svg"}
+                          alt={`${social.label} logo`}
+                          className="w-6 h-6 object-contain"
+                        />
+                      )}
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg">{social.label}</h3>
