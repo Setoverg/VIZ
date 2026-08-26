@@ -32,13 +32,6 @@ const socialLinks = [
     href: "https://boosty.to/tovizy",
     handle: "boosty.to/tovizy",
   },
-  {
-    icon: null,
-    iconSrc: "/images/tovizy-logo.png",
-    label: "Website",
-    href: "https://tovizy.com",
-    handle: "tovizy.com",
-  },
 ]
 
 export function ContactSection() {
