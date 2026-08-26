@@ -3,9 +3,9 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Alex Lekarev - CV | 3D Visualization Artist",
+  title: "Alex Lane - CV | 3D Visualization Artist",
   description:
-    "Professional CV of Alex Lekarev - Lead 3D Visualization Artist with over 12 years of experience in photorealistic rendering and architectural visualization.",
+    "Professional CV of Alex Lane - Lead 3D Visualization Artist with over 12 years of experience in photorealistic rendering and architectural visualization.",
 }
 
 export default function CV() {
