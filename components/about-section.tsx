@@ -35,7 +35,7 @@ export function AboutSection() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance text-foreground">About toViZy</h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              We're <span className="text-primary font-semibold">Alex and Alexandra Lekarev</span> — a creative duo
+              We're <span className="text-primary font-semibold">Alex and Alexandra Lane</span> — a creative duo
               specializing in high-end 3D visualization for interior designers and architects.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
@@ -70,7 +70,7 @@ export function AboutSection() {
             <div className="aspect-[4/5] rounded-2xl overflow-hidden glass-dark glow-on-hover relative">
               <Image
                 src="/images/team-photo.jpg"
-                alt="Alex and Alexandra Lekarev"
+                alt="Alex and Alexandra Lane"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"

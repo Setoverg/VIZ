@@ -38,14 +38,14 @@ export function CVPage() {
               <div className="w-28 h-28 print:w-20 print:h-20 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0 bg-white">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Me_AlexLekarev-mE28PWk2JMKk4Dv56gH1S8sKMgwbRl.jpg"
-                  alt="Alex Lekarev"
+                  alt="Alex Lane"
                   className="w-full h-full object-cover rounded-full"
                   style={{ objectPosition: "center 30%" }}
                 />
               </div>
 
               <div className="flex-1 text-center md:text-left">
-                <h1 className="text-4xl print:text-2xl font-bold mb-2 print:mb-1">Alex Lekarev</h1>
+                <h1 className="text-4xl print:text-2xl font-bold mb-2 print:mb-1">Alex Lane</h1>
                 <p className="text-xl print:text-sm mb-3 print:mb-2 text-white/90">
                   Lead 3D Visualization Artist & Generalist
                 </p>
