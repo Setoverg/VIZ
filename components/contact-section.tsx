@@ -32,6 +32,13 @@ const socialLinks = [
     href: "https://boosty.to/tovizy",
     handle: "boosty.to/tovizy",
   },
+  {
+    icon: null,
+    iconSrc: "/images/tovizy-logo.png",
+    label: "Website",
+    href: "https://tovizy.com",
+    handle: "tovizy.com",
+  },
 ]
 
 export function ContactSection() {
@@ -142,14 +149,14 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 group"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden group-hover:bg-primary/20 transition-colors">
                       {social.icon ? (
                         <social.icon className="w-6 h-6 text-primary" />
                       ) : (
                         <img
                           src={social.iconSrc || "/placeholder.svg"}
                           alt={`${social.label} logo`}
-                          className="w-6 h-6 object-contain"
+                          className="w-full h-full object-contain"
                         />
                       )}
                     </div>
